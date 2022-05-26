@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "wmvdmMFDh+C47kht6WcnxKfsXlF5VQ7qutT8YteoJ+joxlRxPDLoXdsQZNung+E1d5cc5PzpPqzp4R2DjZlAJw==",
+  "dgSpecHash": "KMVRfkcGb4wHs5SEAAh3wXAXI8NAKwmKxwfHvfk79tA5l5F2lywUoKVDauPLrSPLM+ZUMYH7yWoteJwJa0S63w==",
   "success": true,
   "projectFilePath": "D:\\LivingStreamChurch\\LivingStream-Back-End\\LivingStream.WebApi\\LivingStream.WebApi.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\User\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.3\\microsoft.aspnetcore.authentication.jwtbearer.5.0.3.nupkg.sha512",
-    "C:\\Users\\User\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.0.1\\microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.3\\microsoft.entityframeworkcore.5.0.3.nupkg.sha512",

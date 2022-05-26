@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LivingStream.Data\LivingStream.Data.csproj" />
+    <ProjectReference Include="..\LivingStream.Domain\LivingStream.Domain.csproj" />
   </ItemGroup>
 
 </Project>

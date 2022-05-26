@@ -17,3 +17,10 @@ namespace Car.Domain.Services.Interfaces
         Task DeleteUserFcmtokenAsync(string tokenToDelete);
     }
 }
+
+namespace LivingStream.Domain
+{
+    public class IUserService
+    {
+    }
+}
