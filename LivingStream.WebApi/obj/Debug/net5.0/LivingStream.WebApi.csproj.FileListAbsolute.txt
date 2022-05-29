@@ -3,7 +3,6 @@ D:\LivingStreamChurch\LivingStream-Back-End\LivingStream.WebApi\obj\Debug\net5.0
 D:\LivingStreamChurch\LivingStream-Back-End\LivingStream.WebApi\obj\Debug\net5.0\LivingStream.WebApi.AssemblyInfoInputs.cache
 D:\LivingStreamChurch\LivingStream-Back-End\LivingStream.WebApi\obj\Debug\net5.0\LivingStream.WebApi.AssemblyInfo.cs
 D:\LivingStreamChurch\LivingStream-Back-End\LivingStream.WebApi\obj\Debug\net5.0\LivingStream.WebApi.csproj.CoreCompileInputs.cache
-D:\LivingStreamChurch\LivingStream-Back-End\LivingStream.WebApi\obj\Debug\net5.0\LivingStream.WebApi.MvcApplicationPartsAssemblyInfo.cs
 D:\LivingStreamChurch\LivingStream-Back-End\LivingStream.WebApi\obj\Debug\net5.0\LivingStream.WebApi.MvcApplicationPartsAssemblyInfo.cache
 D:\LivingStreamChurch\LivingStream-Back-End\LivingStream.WebApi\bin\Debug\net5.0\appsettings.Development.json
 D:\LivingStreamChurch\LivingStream-Back-End\LivingStream.WebApi\bin\Debug\net5.0\appsettings.json
@@ -61,3 +60,7 @@ D:\LivingStreamChurch\LivingStream-Back-End\LivingStream.WebApi\obj\Debug\net5.0
 D:\LivingStreamChurch\LivingStream-Back-End\LivingStream.WebApi\obj\Debug\net5.0\ref\LivingStream.WebApi.dll
 D:\LivingStreamChurch\LivingStream-Back-End\LivingStream.WebApi\obj\Debug\net5.0\LivingStream.WebApi.pdb
 D:\LivingStreamChurch\LivingStream-Back-End\LivingStream.WebApi\obj\Debug\net5.0\LivingStream.WebApi.genruntimeconfig.cache
+D:\LivingStreamChurch\LivingStream-Back-End\LivingStream.WebApi\bin\Debug\net5.0\AutoMapper.dll
+D:\LivingStreamChurch\LivingStream-Back-End\LivingStream.WebApi\bin\Debug\net5.0\Humanizer.dll
+D:\LivingStreamChurch\LivingStream-Back-End\LivingStream.WebApi\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\LivingStreamChurch\LivingStream-Back-End\LivingStream.WebApi\obj\Debug\net5.0\LivingStream.WebApi.MvcApplicationPartsAssemblyInfo.cs

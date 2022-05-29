@@ -1,12 +1,10 @@
 ﻿using LivingStream.Data.Entities;
 using LivingStream.Data.Infrastructure;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
-using System.Threading.Tasks;
 
-namespace LivingStream.WebApi.ServiceExtention
+namespace LivingStream.Domain
 {
     public static class ClaimsPrincipalExtensions
     {

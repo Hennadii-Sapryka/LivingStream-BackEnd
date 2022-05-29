@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# CS0006: Metadata file 'D:\LivingStreamChurch\LivingStream-Back-End\LivingStream.Data\bin\Debug\net5.0\ref\LivingStream.Data.dll' could not be found
+dotnet_diagnostic.CS0006.severity = none

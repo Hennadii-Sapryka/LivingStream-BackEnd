@@ -1,18 +1,14 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using LivingStream.Data;
-using LivingStream.WebApi.ServiceExtension;
 using LivingStream.Data.Infrastructure;
 using LivingStream.Data.Entities;
 using LivingStream.Data.Context;
+using LivingStream.WebApi.ServiceExtension;
 
 namespace LivingStream.WebApi
 {
@@ -28,11 +24,12 @@ namespace LivingStream.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.InstallServicesInAssembly(Configuration);
 
             services.AddDbContext<LivingStreamContext>(options => options
-.UseSqlServer(Configuration.GetConnectionString("MyConnection")));
-
+            .UseSqlServer(Configuration.GetConnectionString("MyConnection"), 
+            b=>b.MigrationsAssembly("LivingStream.Data")));
 
             services.AddScoped<IRepository<User>, Repository<User>>();
             services.AddScoped<IRepository<FcmToken>, Repository<FcmToken>>();

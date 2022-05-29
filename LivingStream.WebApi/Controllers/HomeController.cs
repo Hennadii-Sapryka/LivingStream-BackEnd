@@ -1,7 +1,8 @@
 ﻿using LivingStream.Data.Entities;
-using LivingStream.Domain;
+using LivingStream.Domain.Dto;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using LivingStream.Data;
 
 
 
@@ -33,17 +34,6 @@ namespace LivingStream.WebApi.Controllers
         public async Task<IActionResult> GetAllUsers() =>
             Ok(await userService.GetAllUsersAsync());
 
-        /// <summary>
-        /// Updates a users image with the identifier asynchronously.
-        /// </summary>
-        /// <param name="updateUserImageDto">User object to update.</param>
-        /// <returns>Updated user.</returns>
-        [HttpPut("image")]
-        public async Task<IActionResult> UpdateUserImage([FromForm] UpdateUserImageDto updateUserImageDto)
-        {
-            var (isUserUpdated, updatedUser) = await userService.UpdateUserImageAsync(updateUserImageDto);
-            return isUserUpdated ? Ok(updatedUser) : Forbid();
-        }
 
         /// <summary>
         /// Accept privacy policy and terms of use for logged user.
