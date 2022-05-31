@@ -1,4 +1,4 @@
-﻿namespace LivingStream.Data.Entities
+﻿namespace LivingStream.Domain.Dto
 {
     public class UserEmailDto
     {

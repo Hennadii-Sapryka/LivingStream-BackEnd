@@ -3,11 +3,11 @@ using LivingStream.Domain.Dto;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using LivingStream.Data;
-
-
+using Microsoft.Identity.Web.Resource;
 
 namespace LivingStream.WebApi.Controllers
 {
+    [RequiredScope("ApiAccess")]
     [ApiController]
     [Route("api/users")]
     public class UserController : ControllerBase

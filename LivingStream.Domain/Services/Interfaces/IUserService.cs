@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using LivingStream.Data.Entities;
 
-namespace Car.Domain.Services.Interfaces
+namespace LivingStream.Domain.Dto
 {
     public interface IUserService
     {
@@ -15,12 +15,5 @@ namespace Car.Domain.Services.Interfaces
         Task<UserFcmTokenDto?> AddUserFcmtokenAsync(UserFcmTokenDto userFcmtokenDto);
 
         Task DeleteUserFcmtokenAsync(string tokenToDelete);
-    }
-}
-
-namespace LivingStream.Domain
-{
-    public class IUserService
-    {
     }
 }

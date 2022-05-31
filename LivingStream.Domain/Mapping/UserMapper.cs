@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using LivingStream.Data.Entities;
+using LivingStream.Domain.Dto;
 
 namespace LivingStream.Domain.Mapping
 {

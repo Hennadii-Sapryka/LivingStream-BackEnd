@@ -1,10 +1,7 @@
 ﻿using LivingStream.Data.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using LivingStream.Data;
+
 
 namespace LivingStream.Data.Context
 {
@@ -18,9 +15,5 @@ namespace LivingStream.Data.Context
         {
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            
-        }
     }
 }

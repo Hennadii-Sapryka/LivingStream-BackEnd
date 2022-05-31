@@ -9,6 +9,14 @@ using LivingStream.Data.Infrastructure;
 using LivingStream.Data.Entities;
 using LivingStream.Data.Context;
 using LivingStream.WebApi.ServiceExtension;
+using System.Reflection;
+using System;
+using System.IO;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using LivingStream.Domain.Dto;
+using LivingStream.Domain.Services;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.AspNetCore.Http;
 
 namespace LivingStream.WebApi
 {
@@ -25,19 +33,48 @@ namespace LivingStream.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.InstallServicesInAssembly(Configuration);
+            //services.InstallServicesInAssembly(Configuration);
+            services.AddLogging();
 
             services.AddDbContext<LivingStreamContext>(options => options
             .UseSqlServer(Configuration.GetConnectionString("MyConnection"), 
             b=>b.MigrationsAssembly("LivingStream.Data")));
 
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
             services.AddScoped<IRepository<User>, Repository<User>>();
             services.AddScoped<IRepository<FcmToken>, Repository<FcmToken>>();
+            services.AddScoped<IUserService, UserService>();
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "LivingStream.WebApi", Version = "v1" });
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                //c.IncludeXmlComments(xmlPath);
+
+                var securityScheme = new OpenApiSecurityScheme
+                {
+                    Name = "JWT Authentication",
+                    Description = "Enter JWT Bearer token **_only_**",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "bearer",
+                    BearerFormat = "JWT",
+                    Reference = new OpenApiReference
+                    {
+                        Id = JwtBearerDefaults.AuthenticationScheme,
+                        Type = ReferenceType.SecurityScheme,
+                    },
+                };
+
+                c.AddSecurityDefinition(securityScheme.Reference.Id, securityScheme);
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    { securityScheme, Array.Empty<string>() },
+                });
             });
         }
 
@@ -46,7 +83,7 @@ namespace LivingStream.WebApi
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                //app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "LivingStream.WebApi v1"));
             }
@@ -55,7 +92,7 @@ namespace LivingStream.WebApi
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            //app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
