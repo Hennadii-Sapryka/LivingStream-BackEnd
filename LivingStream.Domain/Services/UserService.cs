@@ -6,9 +6,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
-using User = LivingStream.Data.Entities.User;
 using LivingStream.WebApi.ServiceExtention;
 using LivingStream.Domain.Dto;
+using User = LivingStream.Data.Entities.User;
+using LivingStream.Domain.Dto.User;
 
 namespace LivingStream.Domain.Services
 {
@@ -32,6 +33,16 @@ namespace LivingStream.Domain.Services
             var user = await userRepository.Query().FirstOrDefaultAsync(u => u.Id == userId);
 
             return mapper.Map<User, UserDto>(user);
+        }
+
+        public async Task<CreateUserDto> AddUserAsync(CreateUserDto createUserModel)
+        {
+            var userEntity = mapper.Map<CreateUserDto, User>(createUserModel);
+
+            var newUser = await userRepository.AddAsync(userEntity);
+            await userRepository.SaveChangesAsync();
+
+            return mapper.Map<User, CreateUserDto>(newUser);
         }
 
         public async Task<IEnumerable<UserEmailDto>> GetAllUsersAsync()

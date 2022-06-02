@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using LivingStream.Data.Entities;
 using LivingStream.Domain.Dto;
+using LivingStream.Domain.Dto.User;
 
 namespace LivingStream.Domain.Mapping
 {
@@ -9,8 +10,11 @@ namespace LivingStream.Domain.Mapping
         public UserMapper()
         {
             CreateMap<UserFcmTokenDto, FcmToken>().ReverseMap();
-            CreateMap<User, UserDto>().ReverseMap();
+            CreateMap<UserDto, User>().ReverseMap();
+            CreateMap<CreateUserDto, User>().ReverseMap();
+            CreateMap<User, CreateUserDto>().ReverseMap();
             CreateMap<User, UserEmailDto>().ReverseMap();
+
         }
     }
 }

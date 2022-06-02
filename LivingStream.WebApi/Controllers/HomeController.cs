@@ -1,9 +1,10 @@
-﻿using LivingStream.Data.Entities;
+﻿
 using LivingStream.Domain.Dto;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using LivingStream.Data;
+
 using Microsoft.Identity.Web.Resource;
+using LivingStream.Domain.Dto.User;
 
 namespace LivingStream.WebApi.Controllers
 {
@@ -34,6 +35,9 @@ namespace LivingStream.WebApi.Controllers
         public async Task<IActionResult> GetAllUsers() =>
             Ok(await userService.GetAllUsersAsync());
 
+        [HttpPost]
+        public async Task<IActionResult> AddUser([FromForm] CreateUserDto user) =>
+    Ok(await userService.AddUserAsync(user));
 
         /// <summary>
         /// Accept privacy policy and terms of use for logged user.

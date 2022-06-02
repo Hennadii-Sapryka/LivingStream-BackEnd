@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using LivingStream.Data.Entities;
+using LivingStream.Domain.Dto.User;
 
 namespace LivingStream.Domain.Dto
 {
@@ -15,5 +16,6 @@ namespace LivingStream.Domain.Dto
         Task<UserFcmTokenDto?> AddUserFcmtokenAsync(UserFcmTokenDto userFcmtokenDto);
 
         Task DeleteUserFcmtokenAsync(string tokenToDelete);
+        Task<CreateUserDto> AddUserAsync(CreateUserDto user);
     }
 }
