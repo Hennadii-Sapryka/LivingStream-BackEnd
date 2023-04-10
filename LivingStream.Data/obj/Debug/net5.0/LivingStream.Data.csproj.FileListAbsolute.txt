@@ -2,9 +2,7 @@ D:\LivingStreamChurch\LivingStream-Back-End\LivingStream.Data\bin\Debug\net5.0\L
 D:\LivingStreamChurch\LivingStream-Back-End\LivingStream.Data\bin\Debug\net5.0\LivingStream.Data.runtimeconfig.json
 D:\LivingStreamChurch\LivingStream-Back-End\LivingStream.Data\bin\Debug\net5.0\LivingStream.Data.runtimeconfig.dev.json
 D:\LivingStreamChurch\LivingStream-Back-End\LivingStream.Data\bin\Debug\net5.0\LivingStream.Data.dll
-D:\LivingStreamChurch\LivingStream-Back-End\LivingStream.Data\bin\Debug\net5.0\ref\LivingStream.Data.dll
 D:\LivingStreamChurch\LivingStream-Back-End\LivingStream.Data\bin\Debug\net5.0\LivingStream.Data.pdb
-D:\LivingStreamChurch\LivingStream-Back-End\LivingStream.Data\obj\Debug\net5.0\LivingStream.Data.csproj.AssemblyReference.cache
 D:\LivingStreamChurch\LivingStream-Back-End\LivingStream.Data\obj\Debug\net5.0\LivingStream.Data.GeneratedMSBuildEditorConfig.editorconfig
 D:\LivingStreamChurch\LivingStream-Back-End\LivingStream.Data\obj\Debug\net5.0\LivingStream.Data.AssemblyInfoInputs.cache
 D:\LivingStreamChurch\LivingStream-Back-End\LivingStream.Data\obj\Debug\net5.0\LivingStream.Data.AssemblyInfo.cs
@@ -13,3 +11,5 @@ D:\LivingStreamChurch\LivingStream-Back-End\LivingStream.Data\obj\Debug\net5.0\L
 D:\LivingStreamChurch\LivingStream-Back-End\LivingStream.Data\obj\Debug\net5.0\ref\LivingStream.Data.dll
 D:\LivingStreamChurch\LivingStream-Back-End\LivingStream.Data\obj\Debug\net5.0\LivingStream.Data.pdb
 D:\LivingStreamChurch\LivingStream-Back-End\LivingStream.Data\obj\Debug\net5.0\LivingStream.Data.genruntimeconfig.cache
+D:\LivingStreamChurch\LivingStream-Back-End\LivingStream.Data\obj\Debug\net5.0\LivingStream.Data.csproj.AssemblyReference.cache
+D:\LivingStreamChurch\LivingStream-Back-End\LivingStream.Data\obj\Debug\net5.0\refint\LivingStream.Data.dll

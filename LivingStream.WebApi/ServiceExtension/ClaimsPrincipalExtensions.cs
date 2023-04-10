@@ -15,9 +15,11 @@ namespace LivingStream.Domain
                 throw new ArgumentNullException(nameof(principal));
             }
 
-            var loggedInUserIdClaim = principal.Claims.First(c => c.Type == "preferred_username");
+            var loggedInUserIdClaim = principal.FindFirstValue(ClaimTypes.Email); 
 
-            return userRepository.Query().FirstOrDefault(u => u.Email == loggedInUserIdClaim.Value)!.Id;
+            var listEmail = userRepository.Query().Select(u => u.Email);
+
+            return userRepository.Query().FirstOrDefault(u => u.Email == loggedInUserIdClaim)!.Id;
         }
     }
 }

@@ -10,6 +10,8 @@ using LivingStream.WebApi.ServiceExtention;
 using LivingStream.Domain.Dto;
 using User = LivingStream.Data.Entities.User;
 using LivingStream.Domain.Dto.User;
+using System.Security.Claims;
+using LivingStream.Domain.Interfaces;
 
 namespace LivingStream.Domain.Services
 {
@@ -62,6 +64,23 @@ namespace LivingStream.Domain.Services
             await userRepository.SaveChangesAsync();
 
             return mapper.Map<User, UserDto>(user);
+        }
+
+        public async Task<bool> DeleteUserAsync()
+        {
+            int userId = httpContextAccessor.HttpContext!.User.GetCurrentUserId(userRepository);
+   
+            var user = await userRepository.GetByIdAsync(userId);
+
+            if (user!=null)
+            {
+                return false;
+            }
+
+            userRepository.Delete(user!);
+            await userRepository.SaveChangesAsync();
+
+            return true;
         }
 
         public async Task<UserFcmTokenDto?> AddUserFcmtokenAsync(UserFcmTokenDto userFcmtokenDto)

@@ -14,9 +14,7 @@ namespace LivingStream.WebApi.ServiceExtention
             {
                 throw new ArgumentNullException(nameof(principal));
             }
-
             var loggedInUserIdClaim = principal.Claims.First(c => c.Type == "preferred_username");
-
             return userRepository.Query().FirstOrDefault(u => u.Email == loggedInUserIdClaim.Value)!.Id;
         }
     }

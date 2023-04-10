@@ -16,6 +16,9 @@ using LivingStream.Domain.Dto;
 using LivingStream.Domain.Services;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.AspNetCore.Http;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using LivingStream.Domain.Interfaces;
 
 namespace LivingStream.WebApi
 {
@@ -32,15 +35,16 @@ namespace LivingStream.WebApi
         {
             services.AddLogging();
             services.AddDbContext<LivingStreamContext>(options => options
-            .UseSqlServer(Configuration.GetConnectionString("MyConnection"), 
-            b=>b.MigrationsAssembly("LivingStream.Data")));
+            .UseSqlServer(Configuration.GetConnectionString("MyConnection"),
+            b => b.MigrationsAssembly("LivingStream.Data")));
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddControllers();
             services.AddScoped<IRepository<User>, Repository<User>>();
             services.AddScoped<IRepository<FcmToken>, Repository<FcmToken>>();
             services.AddScoped<IUserService, UserService>();
-            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<LoginService>();
+            services.AddHttpContextAccessor();
 
             services.AddCors(options =>
             {
@@ -58,28 +62,51 @@ namespace LivingStream.WebApi
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "LivingStream.WebApi", Version = "v1" });
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                //c.IncludeXmlComments(xmlPath);
 
-                var securityScheme = new OpenApiSecurityScheme
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
-                    Name = "JWT Authentication",
-                    Description = "Enter JWT Bearer token **_only_**",
-                    In = ParameterLocation.Header,
+                    Name = "Authorization",
                     Type = SecuritySchemeType.Http,
-                    Scheme = "bearer",
+                    Scheme = "Bearer",
                     BearerFormat = "JWT",
-                    Reference = new OpenApiReference
-                    {
-                        Id = JwtBearerDefaults.AuthenticationScheme,
-                        Type = ReferenceType.SecurityScheme,
-                    },
-                };
+                    In = ParameterLocation.Header,
+                    Description = "JWT Auth using the Bearer scheme.",
+                });
 
-                c.AddSecurityDefinition(securityScheme.Reference.Id, securityScheme);
                 c.AddSecurityRequirement(new OpenApiSecurityRequirement
                 {
-                    { securityScheme, Array.Empty<string>() },
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer",
+                            }
+                        },
+                        Array.Empty<string>()
+                    }
                 });
+            });
+
+            services.AddAuthentication(option =>
+            {
+                option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+
+            }).AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    ValidateLifetime = false,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = Configuration["JwtToken:Issuer"],
+                    ValidAudience = Configuration["JwtToken:Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JwtToken:Key"])),
+
+                };
             });
         }
 
@@ -95,6 +122,7 @@ namespace LivingStream.WebApi
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
